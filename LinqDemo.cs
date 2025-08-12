@@ -1,0 +1,86 @@
+﻿using System;
+using System.Collections;
+using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace ConsoleApCsharpAdvanceDemos
+{
+    internal class LinqDemo
+    {
+
+        int[] numbers = { 101, 122, 365, 14, 95, 86, 57, 78, 89, 10 };
+
+        List<Trainee> trainees = new List<Trainee>
+        {
+            new Trainee("John Doe", "T001", "C# Programming"),
+            new Trainee("Jane Smith", "T002", "Java Programming"),
+            new Trainee("Alice Johnson", "T003", "Python Programming")
+        };
+
+       ArrayList arrayList = new ArrayList
+        {
+            101, 122, 365, 14, 95, 86, 57, 78, 89, 10,
+            "John Doe", "Jane Smith", "Alice Johnson"
+        };
+
+
+        // Linq queries
+
+        public void LinqOfTypeArraylist()
+        {
+           
+            var names = arrayList.OfType<string>();
+            var numbers = arrayList.OfType<int>();
+            Console.WriteLine("Names are :");
+            foreach( var name in names)
+            {
+                Console.Write(name+"  ");
+
+            }
+            Console.WriteLine("\nNumbers are:");
+
+            foreach(var no in numbers)
+            {
+                Console.Write(no + " ");
+            }
+        }
+
+        public void BasicLinqery()
+        {
+            var result = from no in numbers select no;
+            
+            foreach(var n in result)
+            { 
+                Console.Write(n +"  ");
+            }
+            Console.WriteLine();
+        }
+
+        public void UsingwhereLinq()
+        {
+            Console.WriteLine("using where clause in LINQ");
+            var result =from no in numbers
+                        where no >70 select no;
+
+            foreach (var n in result)
+            {
+                Console.Write(" " + n);
+            }
+        }
+
+        public void UsingOrderByLinq()
+        {
+            Console.WriteLine("using OrderBy clause in LINQ");
+            var result = from trainee in trainees
+                         orderby trainee.Name ascending
+                         select trainee;
+            foreach (var t in result)
+            {
+                Console.WriteLine($"Name: {t.Name}, Id: {t.Id}, Course: {t.Course}");
+            }
+        }
+    }
+}

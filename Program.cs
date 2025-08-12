@@ -3,9 +3,15 @@ using ConsoleApCsharpAdvanceDemos;
 
 Console.WriteLine("Hello, World! Welcome to Advance C#.Net Topics");
 
-DictionaryDemo dictionaryDemo = new DictionaryDemo();
+LinqDemo LinqDemo = new LinqDemo();
 
-dictionaryDemo.DictionaryDemoMethod();
+LinqDemo.BasicLinqery();
+LinqDemo.UsingwhereLinq();
+LinqDemo.UsingOrderByLinq();
+LinqDemo.LinqOfTypeArraylist();
+
+
+//DictionaryDemoExample();
 //TaineeStreamClassDemo();
 
 //DelegatesExample();
@@ -57,4 +63,11 @@ static void TaineeStreamClassDemo()
     //trainee.DisplayInfo();
     trainee.AddTrainee(trainee, fileName);
     trainee.ReadTrainees(fileName);
+}
+
+static void DictionaryDemoExample()
+{
+    DictionaryDemo dictionaryDemo = new DictionaryDemo();
+
+    dictionaryDemo.DictionaryDemoMethod();
 }
