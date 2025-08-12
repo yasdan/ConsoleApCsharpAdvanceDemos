@@ -3,22 +3,10 @@ using ConsoleApCsharpAdvanceDemos;
 
 Console.WriteLine("Hello, World! Welcome to Advance C#.Net Topics");
 
-Trainee trainee = new Trainee();
-//Console.WriteLine("Enter File name with .txt extension");
-//string fileName = Console.ReadLine() ?? "trainees.txt";
-string fileName = "trainees.txt"; // Default file name
+DictionaryDemo dictionaryDemo = new DictionaryDemo();
 
-Console.WriteLine("Enter Trainee Name:");
-trainee.Name = Console.ReadLine() ?? string.Empty;
-Console.WriteLine("Enter Trainee Id:");
-trainee.Id = Console.ReadLine() ?? string.Empty;
-Console.WriteLine("Enter Trainee Course:");
-trainee.Course = Console.ReadLine() ?? string.Empty;
-
-//trainee.DisplayInfo();
-trainee.AddTrainee(trainee,fileName);
-trainee.ReadTrainees(fileName);
-
+dictionaryDemo.DictionaryDemoMethod();
+//TaineeStreamClassDemo();
 
 //DelegatesExample();
 
@@ -52,3 +40,21 @@ static void DelegatesExample()
     delegatesDemo.Unsubscribe(message => Console.WriteLine($"Received message: {message}"));
 }
 
+static void TaineeStreamClassDemo()
+{
+    Trainee trainee = new Trainee();
+    //Console.WriteLine("Enter File name with .txt extension");
+    //string fileName = Console.ReadLine() ?? "trainees.txt";
+    string fileName = "trainees.txt"; // Default file name
+
+    Console.WriteLine("Enter Trainee Name:");
+    trainee.Name = Console.ReadLine() ?? string.Empty;
+    Console.WriteLine("Enter Trainee Id:");
+    trainee.Id = Console.ReadLine() ?? string.Empty;
+    Console.WriteLine("Enter Trainee Course:");
+    trainee.Course = Console.ReadLine() ?? string.Empty;
+
+    //trainee.DisplayInfo();
+    trainee.AddTrainee(trainee, fileName);
+    trainee.ReadTrainees(fileName);
+}
