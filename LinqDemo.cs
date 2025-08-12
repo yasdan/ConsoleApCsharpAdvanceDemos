@@ -17,7 +17,13 @@ namespace ConsoleApCsharpAdvanceDemos
         {
             new Trainee("John Doe", "T001", "C# Programming"),
             new Trainee("Jane Smith", "T002", "Java Programming"),
-            new Trainee("Alice Johnson", "T003", "Python Programming")
+            new Trainee("Alice Johnson", "T003", "Python Programming"),
+            new Trainee("Bob Brown", "T004", "Web Development"),
+            new Trainee("Charlie White", "T005", "Data Science"),
+            new Trainee("David Green", "T006", "C# Programming"),
+            new Trainee("Eve Black", "T007", "Java Programming"),
+            new Trainee("Frank Blue", "T008", "Python Programming"),
+            new Trainee("Grace Yellow", "T009", "Web Development"),
         };
 
        ArrayList arrayList = new ArrayList
@@ -29,6 +35,51 @@ namespace ConsoleApCsharpAdvanceDemos
 
         // Linq queries
 
+
+        public void TakeLinq()
+        {
+            Console.WriteLine("Using Take in LINQ");
+            var result = numbers.Take(5);
+            foreach (var n in result)
+            {
+                Console.Write(n + " ");
+            }
+            Console.WriteLine();
+
+            var takeresult = numbers.TakeWhile(n => n > 100);
+
+            Console.WriteLine("Using TakeWhile in LINQ");
+            foreach (var n in takeresult)
+            {
+                Console.Write(n + " ");
+            }
+            Console.WriteLine();
+        }
+        public void GroupByLinq()
+        {
+            Console.WriteLine("Using GroupBy in LINQ");
+            var groupedTrainees = trainees.GroupBy(t => t.Course);
+            foreach (var group in groupedTrainees)
+            {
+                Console.WriteLine($"Course: {group.Key}");
+                foreach (var trainee in group)
+                {
+                    Console.WriteLine($"  Name: {trainee.Name}, Id: {trainee.Id}");
+                }
+            }
+        }
+        public void OrderByThenByLinq()
+        {
+            Console.WriteLine("Using OrderBy and ThenBy in LINQ");
+            /* var result = from trainee in trainees
+                          orderby trainee.Name ascending, trainee.Id descending
+                          select trainee;*/
+            var result = trainees.OrderBy(t => t.Name).ThenByDescending(t => t.Id);
+            foreach (var t in result)
+            {
+                Console.WriteLine($"Name: {t.Name}, Id: {t.Id}, Course: {t.Course}");
+            }
+        }
         public void LinqOfTypeArraylist()
         {
            

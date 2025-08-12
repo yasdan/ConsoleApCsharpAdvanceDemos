@@ -5,10 +5,13 @@ Console.WriteLine("Hello, World! Welcome to Advance C#.Net Topics");
 
 LinqDemo LinqDemo = new LinqDemo();
 
-LinqDemo.BasicLinqery();
-LinqDemo.UsingwhereLinq();
-LinqDemo.UsingOrderByLinq();
+//LinqDemo.BasicLinqery();
+//LinqDemo.UsingwhereLinq();
+//LinqDemo.UsingOrderByLinq();
 LinqDemo.LinqOfTypeArraylist();
+LinqDemo.OrderByThenByLinq();
+LinqDemo.GroupByLinq();
+LinqDemo.TakeLinq();
 
 
 //DictionaryDemoExample();
