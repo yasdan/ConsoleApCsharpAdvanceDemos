@@ -3,15 +3,23 @@ using ConsoleApCsharpAdvanceDemos;
 
 Console.WriteLine("Hello, World! Welcome to Advance C#.Net Topics");
 
-LinqDemo LinqDemo = new LinqDemo();
+//LinqDemo LinqDemo = new LinqDemo();
 
 //LinqDemo.BasicLinqery();
 //LinqDemo.UsingwhereLinq();
 //LinqDemo.UsingOrderByLinq();
-LinqDemo.LinqOfTypeArraylist();
-LinqDemo.OrderByThenByLinq();
-LinqDemo.GroupByLinq();
-LinqDemo.TakeLinq();
+//LinqDemo.LinqOfTypeArraylist();
+//LinqDemo.OrderByThenByLinq();
+//LinqDemo.GroupByLinq();
+//LinqDemo.TakeLinq();
+//LinqDemo.LInqFirstorFirstDefault();
+//LinqDemo.SingleorSingleDefault();
+
+//JsonSerializationDemo();
+//SynchronousGetnumbers();
+
+AsyncGetNumbers();
+
 
 
 //DictionaryDemoExample();
@@ -73,4 +81,36 @@ static void DictionaryDemoExample()
     DictionaryDemo dictionaryDemo = new DictionaryDemo();
 
     dictionaryDemo.DictionaryDemoMethod();
+}
+
+static void JsonSerializationDemo()
+{
+    Trainee trainee = new Trainee();
+    trainee.Id = "T010";
+    trainee.Name = "John Mathew";
+    trainee.Course = "C# Programming";
+    trainee.JsonSerializeTrainee(trainee);
+}
+
+static void SynchronousGetnumbers()
+{
+    Console.WriteLine($"Start: {DateTime.Now.ToLongTimeString()}");
+    var numbers = AsynchronousStreamsDemos.GetNumbers(1, 10);
+    foreach (var number in numbers)
+    {
+        Console.WriteLine($"Number: {number}");
+    }
+    Console.WriteLine($"End: {DateTime.Now.ToLongTimeString()}");
+}
+
+static async void AsyncGetNumbers()
+{
+    //AsynchronousStreamsDemos asynchronousStreamsDemos = new AsynchronousStreamsDemos();
+    Console.WriteLine($"Start: {DateTime.Now.ToLongTimeString()}");
+    var numbersAsync = AsynchronousStreamsDemos.GetNumbersAsync(1, 11);
+     await foreach (var number in numbersAsync)
+    {
+        Console.WriteLine(number);
+    }
+    Console.WriteLine($"End: {DateTime.Now.ToLongTimeString()}");
 }

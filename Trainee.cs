@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Text.Json; // needed for JSON serialization
 
 namespace ConsoleApCsharpAdvanceDemos
 {
@@ -24,6 +25,20 @@ namespace ConsoleApCsharpAdvanceDemos
             Console.WriteLine($"Name: {Name}, Id: {Id}, Course: {Course}");
         }
 
+        public void JsonSerializeTrainee(Trainee trainee)
+        {
+            // This method can be used to serialize the Trainee object to JSON format.
+            // You can use libraries like Newtonsoft.Json or System.Text.Json for serialization.
+            // Example using System.Text.Json:
+            // return JsonSerializer.Serialize(this);
+            string jsonString = JsonSerializer.Serialize(trainee);
+            Console.WriteLine($"Serialized Trainee: {jsonString}");
+
+            Trainee trn =JsonSerializer.Deserialize<Trainee>(jsonString);
+
+            Console.WriteLine($"Deserialized Trainee: Name: {trn.Name}, Id: {trn.Id}, Course: {trn.Course}");
+
+        }
         // write a method to  write Trainee details to a  file using stream writer.
 
         public void AddTrainee(Trainee trainee , string filepath)

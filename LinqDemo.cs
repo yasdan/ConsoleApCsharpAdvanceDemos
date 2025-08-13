@@ -32,10 +32,25 @@ namespace ConsoleApCsharpAdvanceDemos
             "John Doe", "Jane Smith", "Alice Johnson"
         };
 
+        // Linq queries 
 
-        // Linq queries
+        public void SingleorSingleDefault()
+        {
+            var stn = trainees.Single(s => s.Course == "Data Science");
+            Console.WriteLine(stn.Course);
 
+            var tn = trainees.SingleOrDefault(t => t.Course == "Data Science");
+            Console.WriteLine(tn.Course);
+        }
+        public void LInqFirstorFirstDefault()
+        {
+           var trainee= trainees.First(t => t.Id == "T005");
 
+            Console.WriteLine(trainee.Name);
+            var tn = trainees.FirstOrDefault(t => t.Id == "T009");
+            Console.WriteLine(tn.Name);
+
+        }
         public void TakeLinq()
         {
             Console.WriteLine("Using Take in LINQ");
