@@ -18,7 +18,7 @@ Console.WriteLine("Hello, World! Welcome to Advance C#.Net Topics");
 //JsonSerializationDemo();
 //SynchronousGetnumbers();
 
-AsyncGetNumbers();
+//AsyncGetNumbers();
 
 
 
@@ -107,10 +107,13 @@ static async void AsyncGetNumbers()
 {
     //AsynchronousStreamsDemos asynchronousStreamsDemos = new AsynchronousStreamsDemos();
     Console.WriteLine($"Start: {DateTime.Now.ToLongTimeString()}");
-    var numbersAsync = AsynchronousStreamsDemos.GetNumbersAsync(1, 11);
-     await foreach (var number in numbersAsync)
+   // List<int> numbers = new List<int>();
+    var numners =AsynchronousStreamsDemos.GetNumbersAsync(1, 11);
+    
+    await foreach (var number in numners)
     {
-        Console.WriteLine(number);
+       
+        Console.WriteLine($"Number: {number}");
     }
     Console.WriteLine($"End: {DateTime.Now.ToLongTimeString()}");
 }

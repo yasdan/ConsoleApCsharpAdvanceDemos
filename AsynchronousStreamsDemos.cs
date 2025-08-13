@@ -23,15 +23,19 @@ namespace ConsoleApCsharpAdvanceDemos
                 return returnList;
             }
 
-            public static async IAsyncEnumerable<int> GetNumbersAsync(int start, int end)
+        public static async IAsyncEnumerable<int> GetNumbersAsync(int start, int end)
+        {
+            var returnList = new List<int>();
+            for (int i = start; i < end; i++)
             {
-                var random = new Random();
-                for (int i = start; i < end; i++)
-                {
-                    yield return i;
-                    await Task.Delay(400);
-                }
+                returnList.Add(i);
+                Console.WriteLine($"Yielding number: {i}");
+                await Task.Delay(400);
+                yield return i; // This will yield the number asynchronously
+            }
+           // return returnList;
         }
+       
     }
     }
 

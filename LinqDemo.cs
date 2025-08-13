@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -26,7 +27,7 @@ namespace ConsoleApCsharpAdvanceDemos
             new Trainee("Grace Yellow", "T009", "Web Development"),
         };
 
-       ArrayList arrayList = new ArrayList
+        ArrayList arrayList = new ArrayList
         {
             101, 122, 365, 14, 95, 86, 57, 78, 89, 10,
             "John Doe", "Jane Smith", "Alice Johnson"
@@ -44,7 +45,7 @@ namespace ConsoleApCsharpAdvanceDemos
         }
         public void LInqFirstorFirstDefault()
         {
-           var trainee= trainees.First(t => t.Id == "T005");
+            var trainee = trainees.First(t => t.Id == "T005");
 
             Console.WriteLine(trainee.Name);
             var tn = trainees.FirstOrDefault(t => t.Id == "T009");
@@ -97,18 +98,18 @@ namespace ConsoleApCsharpAdvanceDemos
         }
         public void LinqOfTypeArraylist()
         {
-           
+
             var names = arrayList.OfType<string>();
             var numbers = arrayList.OfType<int>();
             Console.WriteLine("Names are :");
-            foreach( var name in names)
+            foreach (var name in names)
             {
-                Console.Write(name+"  ");
+                Console.Write(name + "  ");
 
             }
             Console.WriteLine("\nNumbers are:");
 
-            foreach(var no in numbers)
+            foreach (var no in numbers)
             {
                 Console.Write(no + " ");
             }
@@ -117,10 +118,10 @@ namespace ConsoleApCsharpAdvanceDemos
         public void BasicLinqery()
         {
             var result = from no in numbers select no;
-            
-            foreach(var n in result)
-            { 
-                Console.Write(n +"  ");
+
+            foreach (var n in result)
+             {
+                Console.Write(n + "  ");
             }
             Console.WriteLine();
         }
@@ -128,8 +129,9 @@ namespace ConsoleApCsharpAdvanceDemos
         public void UsingwhereLinq()
         {
             Console.WriteLine("using where clause in LINQ");
-            var result =from no in numbers
-                        where no >70 select no;
+            var result = from no in numbers
+                         where no > 70
+                         select no;
 
             foreach (var n in result)
             {
@@ -147,6 +149,19 @@ namespace ConsoleApCsharpAdvanceDemos
             {
                 Console.WriteLine($"Name: {t.Name}, Id: {t.Id}, Course: {t.Course}");
             }
+        }
+
+        Func<int, bool> isEven = (n) => n % 2 == 0;
+        //Console.WriteLine("Using Func delegate to filter even numbers:");
+        public void UsingFuncLinq()
+        {
+            var evenNumbers = numbers.Where(isEven);
+            foreach (var n in evenNumbers)
+            {
+                Console.Write(n + " ");
+            }
+            Console.WriteLine();
+
         }
     }
 }
