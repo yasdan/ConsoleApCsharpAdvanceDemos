@@ -39,18 +39,23 @@ static void DelegatesExample()
     calculateDelegate = delegatesDemo.Sum;
     // Using the delegate to call methods directly
     calculateDelegate(20, 30);
+    Console.WriteLine("After adding multiply method to delegate, call directly");
     calculateDelegate += delegatesDemo.Multiply;
 
     calculateDelegate(15, 10);
     // Removing a method from the delegate invocation list
     calculateDelegate -= delegatesDemo.Multiply;
+    Console.WriteLine("After removing multiply method from delegate, call directly");
     calculateDelegate(50, 25);
     // Invoking the delegate
+    Console.WriteLine("Invoking the delegate");
     calculateDelegate.Invoke(5, 10);
     calculateDelegate += delegatesDemo.Divide;
+    Console.WriteLine("After adding divide method to delegate, call directly");
     calculateDelegate(100, 20);
 
     // Using delegates with events
+    Console.WriteLine("Using delegates with events");
     delegatesDemo.Subscribe(message => Console.WriteLine($"Received message: {message}"));
 
     delegatesDemo.TriggerEvent("This is a test message after subscribing!");
